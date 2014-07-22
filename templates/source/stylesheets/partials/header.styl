@@ -1,0 +1,184 @@
+.masthead
+  position fixed
+  top 0
+  left 0
+  right 0
+  box-sizing border-box
+  height 68px
+  padding 0 36px 0 36px
+  background-color $gray
+  background-image url("/images/masthead-bg.png")
+  color #fff
+  z-index 10
+  text-shadow 0 1px 1px #222
+
+.logo
+  color transparent
+  text-indent 100000
+  display block
+  width 110px
+  height 52px
+  margin 3px 0 0 0
+  background-image url("/images/adagio-logo.png")
+  background-size 100% auto
+  background-repeat no-repeat
+  text-shadow none
+  float left
+
+.profile-dropdown
+  display none
+
+.profile-menu
+  display none
+
+.profile-pic
+  display none
+  border-radius $radius
+  embossed("light")
+  width 40px
+  height 40px
+  overflow hidden
+  float left
+  margin 0 18px
+  img
+    width 100%
+    height auto
+    boder none
+
+.master-controls
+  margin 0 0 0 36%
+  button
+    -webkit-appearance none
+    -moz-appearance none
+    float left
+    height 40px
+    background-color transparent
+    border none
+    color transparent
+    text-indent -100000px
+    overflow hidden
+    width 75px
+    height 60px
+    background-image url("/images/master-control-icons.png")
+    background-repeat no-repeat
+    background-size 150px 120px
+    outline none
+    transition background-position 0.1s ease-out
+    &.play
+      background-position right top
+    &.pause
+      background-position right bottom
+  hr
+    float left
+    width 0
+    height 40px
+    margin 10px 0
+    border none
+    border-right 1px solid $gray
+
+.master-volume-controls
+  float left
+  padding 14px
+  label
+    margin-right 8px
+    font-size 0.5em
+    letter-spacing 1px
+  input
+    -webkit-appearance none
+    -moz-appearance none
+    width 120px
+    height 2px
+    margin-top 12px
+    background-color darken($gray, 60%)
+    vertical-align 20%
+    border-radius $radius
+    outline none
+    box-shadow 0 0 2px #4a4a4a 2px
+    master-volume-styles("::-webkit-slider-thumb")
+    master-volume-styles("::-moz-range-thumb")
+
+.master-time
+  height 60px
+  font-size 2em
+  line-height 1.6em
+  float left
+  min-width 100px
+  text-align right
+  margin-right 48px
+
+.project-position
+  position absolute
+  left 0
+  right 0
+  bottom 0
+  height 8px
+  width 100%
+  background-color #000
+  meter
+    -webkit-appearance none
+    -moz-appearance none
+    margin 0
+    display block
+    width 100%
+    height 8px
+    cursor pointer
+    &::-webkit-meter-bar
+      background none
+      background-color darken($gray, 50%)
+      box-shadow 0 0 6px #000 inset
+    &::-webkit-meter-optimum-value
+      box-shadow 0 0 8px lighten($yellow-light, 30%)
+      background-size 100% 12px
+      background-color $yellow-light
+      background-image linear-gradient(90deg, $yellow-light 0%, $yellow-light 90%, lighten($yellow-light, 50%) 100%)
+      border-radius 0 2px 2px 0
+
+.mode-toggle
+  button
+    header-buttons()
+    float right
+
+.project-dropdown
+  float left
+  margin 0 18px 0 36px
+  padding 0
+  position relative
+  label
+    font-size 0.5em
+    letter-spacing 1px
+  button
+    header-buttons()
+    padding-right 14px
+    &::after
+      content "▼"
+      display block
+      float right
+      margin 3px 0 0 8px
+      font-size 0.7em
+      transition transform 0.2s ease-out
+      transform-origin 40% 40%
+    &.active
+      &::after
+        transform rotate(180deg)
+
+.project-menu
+  display none
+  list-style none
+  padding 0
+  margin 0
+  background-color #393939
+  color #fff
+  z-index 100000
+  position absolute
+  right 0
+  border-radius $radius 0 $radius $radius
+  overflow hidden
+  li
+    padding 0
+    margin 0
+  a
+    display block
+    padding 0.6em
+    border-top 1px solid lighten(#393939, 20%)
+    &:hover
+      background-color lighten(#393939, 20%)

@@ -1,0 +1,216 @@
+.mixer
+  .review-mode &
+    opacity 0
+    z-index 1
+  z-index 2
+  position fixed
+  top 68px
+  left 0
+  right 0
+  bottom 0
+  padding 0
+  margin 0
+  opacity 1
+  overflow-x auto
+  overflow-y hidden
+  background-color #444
+  transition opacity $anim-snappy ease
+  hr
+    border none
+    border-top 1px solid lighten($gray, 46%)
+    border-bottom 1px solid #fff
+  .container
+    position absolute
+    top 0
+    left 0
+    bottom 0
+
+  .individual-track
+    position absolute
+    top 0
+    bottom 0
+    box-sizing border-box
+    float left
+    margin 0
+    width 170px
+    background-color #eee
+    background-image url("/images/individual-track-bg.png")
+    background-size 100% 100%
+    border-right 1px solid lighten($gray, 36%)
+    padding 12px 12px 52px
+    overflow hidden
+    transition-property opacity, margin-top, margin-bottom
+    transition-duration 0.2s
+    transition-timing-function ease-in-out
+    opacity 1
+    margin-top 0
+    margin-bottom 0
+    .review-mode &
+      opacity 0
+      margin-top 60px
+      margin-bottom -60px
+    track-animations()
+
+  .track-info
+    position absolute
+    box-sizing border-box
+    bottom 0
+    left 0
+    right 0
+    height 40px
+    background-color lighten($gray, 36%)
+    color #fff
+    padding 8px 12px
+    background-color $gray
+    box-shadow inset 0px -30px 81px -20px rgba(0,0,0,0.8)
+    h1
+      font-size 18px
+      font-weight bold
+      color #fff
+
+  .track-pan
+    text-align center
+    padding 12px 0
+    input
+      -webkit-appearance none
+      -moz-appearance none
+      width 80%
+      height 1px
+      background-color lighten($gray, 60%)
+      vertical-align 20%
+      border-radius $radius
+      border none
+      outline none
+      cursor pointer
+      border-bottom 1px solid #eee
+      pan-styles("::-webkit-slider-thumb")
+      pan-styles("::-moz-range-thumb")
+      &::-moz-range-track
+        -webkit-appearance none
+        -moz-appearance none
+        width 80%
+        height 1px
+        background-color lighten($gray, 60%)
+        vertical-align 20%
+        border-radius $radius
+        border none
+        outline none
+        cursor pointer
+        border-bottom 1px solid #eee
+
+  .track-volume-channel-indicators
+    transform rotate(-90deg)
+    height 145px
+    width 466px
+    padding 0 12px 0 24px
+    box-sizing border-box
+    position relative
+    z-index 1
+    // margin-top 472px
+
+  .track-volume-channel-indicators-labels
+    position absolute
+    left 0
+    right 0
+    bottom 88px
+    padding 0 0 12px
+    label
+      box-sizing border-box
+      width 50%
+      padding 0 12px
+      float left
+      text-align center
+
+  .track-volume
+    height 76px
+    margin 0 0 1px
+    padding-top 13px
+    position relative
+    position relative
+    input
+      -webkit-appearance none
+      -moz-appearance none
+      width 100%
+      height 4px
+      border-radius $radius
+      background-color darken($gray, 10%)
+      box-shadow 0 0 2px 1px #fff
+      outline none
+      cursor pointer
+      volume-styles("::-webkit-slider-thumb")
+      volume-styles("::-moz-range-thumb")
+      &::moz-range-track
+        -webkit-appearance none
+        -moz-appearance none
+        width 100%
+        height 4px
+        border-radius $radius
+        background-color darken($gray, 10%)
+        box-shadow 0 0 2px 1px #fff
+        outline none
+    label
+      position absolute
+      bottom 0
+      left 0
+      right 0
+      text-align center
+
+  .track-channel-indicators
+    // display none
+    height 55px
+    position relative
+    padding-top 10px
+    meter
+      -webkit-appearance none
+      -moz-appearance none
+      width 100%
+      height 12px
+      meter-styles-bar("::-webkit-meter-bar")
+      meter-styles-bar("::-moz-meter-bar")
+      meter-styles-optimum("::-webkit-meter-optimum-value")
+      meter-styles-optimum(":-moz-meter-optimum::-moz-meter-bar")
+    label
+      position absolute
+      bottom 0
+      left 15%
+      right 0
+      text-align center
+
+  .track-mute-solo
+    position absolute
+    left 0
+    right 0
+    bottom 56px
+    padding 0 12px
+    clear both
+    button
+      button(true)
+      -moz-appearance none
+
+  .track-volume-legend
+    color $gray
+    font-size 0.7em
+    font-family Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace
+    position absolute
+    z-index 0
+    top 74px
+    left 40px
+    p
+      position absolute
+      left 0
+      &.track-volume-legend-plus
+        top 12.6%
+      &.track-volume-legend-base
+        top 23.8%
+      &.track-volume-legend-minus
+        top 47.4%
+      &.track-volume-legend-less
+        top 68%
+      &.track-volume-legend-lesser
+        top 82.5%
+      &.track-volume-legend-lessest
+        top 90.25%
+      &.track-volume-legend-small
+        top 95.4%
+      &.track-volume-legend-tiny
+        top 98.2%

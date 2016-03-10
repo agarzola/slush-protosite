@@ -72,6 +72,9 @@ gulp.task('default', function (done) {
                 return done();
             }
             answers.appNameSlug = _.slugify(answers.appName);
+
+            var newDir = answers.appName == defaults.appName ? '' : (answers.appName + '/');
+
             gulp.src([__dirname + '/templates/**', __dirname + '/templates/.*'])
                 .pipe(template(answers))
                 // .pipe(rename(function (file) {
@@ -80,7 +83,7 @@ gulp.task('default', function (done) {
                 //     }
                 // }))
                 .pipe(conflict('./'))
-                .pipe(gulp.dest('./'))
+                .pipe(gulp.dest('./' + newDir))
                 .pipe(install())
                 .on('end', function () {
                     done();

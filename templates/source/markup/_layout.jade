@@ -2,11 +2,16 @@ doctype html
 html.no-js(lang="en")
   block vars
   head
-    include partials/_document_head
+    include partials/document_head
 
   body
-    #main.main
-      include partials/_site_header
-      block templates
-      include partials/_site_footer
+    include partials/header
+
+    main#content.content
+      block content
+
+    include partials/navigation
+    include partials/footer
+
+    block script
     script(src="/javascript/main.js")

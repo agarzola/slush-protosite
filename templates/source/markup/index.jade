@@ -1,6 +1,13 @@
 extends _layout
+
 block vars
   -var pageTitle = 'Home'
-block templates
+
+block content
   p.
     Hello, World!
+
+block script
+  script.
+    var demo = 'This is some demo JavaScript.';
+    console.log(demo);

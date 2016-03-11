@@ -14,6 +14,8 @@ var markupSrc = ["source/markup/*.jade", "!source/markup/_layout.jade", "!source
     imagesSrc = "source/images/**/*.*",
     auxSrc    = ["source/**/*.json"]; // This glob is for dummy data files and such
 
+var buildDir = "./build"
+
 // Aaaand we start taskin’
 // By default, we build, serve, and watch for changes:
 gulp.task("default", ["build", "browser-sync"], function () {
@@ -33,7 +35,7 @@ gulp.task("markup", function () {
   .pipe(jade({
     pretty: true
   }))
-  .pipe(gulp.dest("build/"));
+  .pipe(gulp.dest(buildDir));
 });
 
 // Generate styles, add prefixes:
@@ -43,34 +45,34 @@ gulp.task("styles", function () {
     use: [nib()]
   }))
   .pipe(prefix("last 2 versions", "> 1%"))
-  .pipe(gulp.dest("build/stylesheets"));
+  .pipe(gulp.dest(buildDir + "/stylesheets"));
 });
 
 // Copy javascript:
 gulp.task("javascript", function () {
   gulp.src(jsSrc)
-  .pipe(gulp.dest("build/javascript"));
+  .pipe(gulp.dest(buildDir + "/javascript"));
 });
 // TO-DO: Implement hinting & collation.
 
 // Copy images to build dir:
 gulp.task("images", function () {
   gulp.src(imagesSrc)
-  .pipe(gulp.dest("build/images"));
+  .pipe(gulp.dest(buildDir + "/images"));
 });
 
 // Copy additional files:
 // (useful for .json and other dummy data files)
 gulp.task("auxiliary", function () {
   gulp.src(auxSrc)
-  .pipe(gulp.dest("build/"));
+  .pipe(gulp.dest(buildDir));
 });
 
 // Init browser-sync & watch generated files:
 gulp.task("browser-sync", function () {
   browserSync.init(null, {
     server: {
-      baseDir: "./build"
+      baseDir: buildDir
     },
     files: [
       "build/**/*.html",

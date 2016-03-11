@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "./node_modules/gulp/bin/gulp.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "modernizr": "./node_modules/modernizr/bin/modernizr -c modernizr-all.json -d source/javascript/vendor/",
     "modernizr-prod": "./node_modules/modernizr/bin/modernizr -c modernizr-prod.json -d source/javascript/vendor/"

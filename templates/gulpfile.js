@@ -5,7 +5,8 @@ var gulp = require('gulp'),
     nib = require('nib'),
     changed = require('gulp-changed'),
     prefix = require('gulp-autoprefixer'),
-    browserSync = require('browser-sync')
+    browserSync = require('browser-sync'),
+    plumber = require('gulp-plumber')
 
 // Useful globs in handy variables:
 var markupSrc = ['source/markup/**/*.jade', '!source/markup/**/_*.jade', '!source/markup/partials{,/**}'],
@@ -32,6 +33,7 @@ gulp.task('build', ['markup', 'styles', 'javascript', 'images', 'auxiliary'], fu
 // Generate markup:
 gulp.task('markup', function () {
   gulp.src(markupSrc)
+  .pipe(plumber())
   .pipe(jade({
     pretty: true
   }))
@@ -41,6 +43,7 @@ gulp.task('markup', function () {
 // Generate styles, add prefixes:
 gulp.task('styles', function () {
   gulp.src(stylesSrc)
+  .pipe(plumber())
   .pipe(stylus({
     use: [nib()]
   }))
@@ -51,6 +54,7 @@ gulp.task('styles', function () {
 // Copy javascript:
 gulp.task('javascript', function () {
   gulp.src(jsSrc)
+  .pipe(plumber())
   .pipe(gulp.dest(buildDir + '/javascript'));
 });
 // TO-DO: Implement hinting & collation.
@@ -58,6 +62,7 @@ gulp.task('javascript', function () {
 // Copy images to build dir:
 gulp.task('images', function () {
   gulp.src(imagesSrc)
+  .pipe(plumber())
   .pipe(gulp.dest(buildDir + '/images'));
 });
 
@@ -65,6 +70,7 @@ gulp.task('images', function () {
 // (useful for .json and other dummy data files)
 gulp.task('auxiliary', function () {
   gulp.src(auxSrc)
+  .pipe(plumber())
   .pipe(gulp.dest(buildDir));
 });
 

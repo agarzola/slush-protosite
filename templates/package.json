@@ -4,23 +4,31 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/gulp/bin/gulp.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "modernizr": "./node_modules/modernizr/bin/modernizr -c modernizr-all.json -d source/javascript/vendor/",
-    "modernizr-prod": "./node_modules/modernizr/bin/modernizr -c modernizr-prod.json -d source/javascript/vendor/"
+    "modernizr": "./node_modules/modernizr/bin/modernizr -u -c modernizr.json -d source/javascript/vendor/",
+    "build": "./node_modules/gulp/bin/gulp.js build",
+    "watch": "./node_modules/gulp/bin/gulp.js watch",
+    "implode": "rm -rf ./build/*",
+    "deploy": "echo \"Error: no deployment script specified\" && exit 1"
   },
   "author": "Alfonso Gómez-Arzola",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "browser-sync": "^1.1.2",
+    "browser-sync": "^2.13.0",
+    "flightplan": "^0.6.14",
     "gulp": "~3.8.5",
     "gulp-autoprefixer": "0.0.8",
     "gulp-changed": "~0.4.0",
+    "gulp-if": "^2.0.1",
     "gulp-jade": "^0.6.1",
     "gulp-plumber": "^1.1.0",
     "gulp-stylus": "^1.0.2",
+    "gulp-uglify": "^1.5.3",
+    "mocha": "^2.5.3",
     "modernizr": "^3.3.1",
-    "nib": "^1.0.3"
+    "nib": "^1.0.3",
+    "should": "^9.0.2",
+    "yargs": "^4.7.1"
   }
 }

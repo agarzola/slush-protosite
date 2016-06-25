@@ -11,7 +11,7 @@
     "implode": "rm -rf ./build/*",
     "deploy": "echo \"Error: no deployment script specified\" && exit 1"
   },
-  "author": "Alfonso Gómez-Arzola",
+  "author": "",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {

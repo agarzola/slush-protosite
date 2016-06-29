@@ -3,7 +3,7 @@ em(target, context = $basefont)
 
 embossed()
   $shadow_color = invert($gray)
-  if arguments == "light"
+  if arguments == 'light'
     $shadow_color = $gray
   box-shadow 1px 1px 1px $shadow_color
 
@@ -59,12 +59,12 @@ volume-styles(prefix)
     border 1px solid lighten($gray, 40%)
     width 86px
     height 54px
-    background-image url("/images/volume-slider-grip.png"), radial-gradient(50% 88%, #E6E6E6 50%, #F0F0F0 90%)
+    background-image url('/images/volume-slider-grip.png'), radial-gradient(50% 88%, #E6E6E6 50%, #F0F0F0 90%)
     background-position center
     background-repeat no-repeat
     box-shadow 0px 0px 0px 0px rgba(0,0,0,0.15), 4px 0 1px 0px #979797, 7px 0 7px rgba(0,0,0,0.2)
     &::before
-      content " "
+      content ' '
       position absolute
       top 5px
       bottom 5px
@@ -115,6 +115,6 @@ master-volume-styles(prefix)
     box-shadow 0 1px 3px $gray
     position relative
     background-color lighten($gray, 80%)
-    background-image url("/images/master-volume-slider-grip.png")
+    background-image url('/images/master-volume-slider-grip.png')
     background-position center
     background-repeat no-repeat

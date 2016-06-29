@@ -3,7 +3,10 @@ meta(content="IE=edge,chrome=1" http-equiv="X-UA-Compatible")
 meta(content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport")
 link(rel='icon' href='/images/favicon.ico')
 title #{pageTitle ? pageTitle + ' | ' : ''} Project Name
-script(src="/javascript/vendor/modernizr.js")
+
+script
+  include ../../javascript/vendor/modernizr.js
+
 link(rel="stylesheet" href="/stylesheets/main.css")
 //if lt IE 9
   link rel="stylesheet" href="/stylesheets/ie8.css"

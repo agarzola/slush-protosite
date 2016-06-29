@@ -1,6 +1,6 @@
 // Gulp plugins:
 var gulp = require('gulp')
-var jade = require('gulp-jade')
+var pug = require('gulp-pug')
 var stylus = require('gulp-stylus')
 var nib = require('nib')
 var changed = require('gulp-changed')
@@ -14,8 +14,8 @@ var argv = require('yargs').argv
 
 // Useful globs in handy variables:
 var markupSrc = [
-  'source/markup/**/*.jade',
-  '!source/markup/_layout.jade',
+  'source/markup/**/*.pug',
+  '!source/markup/_layout.pug',
   '!source/markup/partials{,/**}',
   '!source/markup/sections{,/**}',
   '!source/markup/features{,/**}' ]
@@ -53,7 +53,7 @@ gulp.task('build',
 gulp.task('markup', function () {
   gulp.src(markupSrc)
   .pipe(plumber())
-  .pipe(jade({
+  .pipe(pug({
     pretty: (argv.production ? false : true)
   }))
   .pipe(gulp.dest('build/'))

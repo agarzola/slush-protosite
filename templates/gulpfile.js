@@ -6,6 +6,7 @@ var nib = require('nib')
 var changed = require('gulp-changed')
 var prefix = require('gulp-autoprefixer')
 var uglify = require('gulp-uglify')
+var concat = require('gulp-concat')
 var plumber = require('gulp-plumber')
 var browserSync = require('browser-sync')
 var gulpIf = require('gulp-if')
@@ -35,7 +36,7 @@ var imagesSrc = 'source/images/**/*.*'
 gulp.task('watch', ['build', 'browser-sync'], function () {
   gulp.watch(markupSrc[0], ['markup'])
   gulp.watch(stylesSrc[0], ['styles'])
-  gulp.watch(jsSrc[0], ['javascript'])
+  gulp.watch(jsSrc[0], ['javascript', 'javascript_vendors'])
   gulp.watch(imagesSrc, ['images'])
 })
 
@@ -44,6 +45,7 @@ gulp.task('build',
   [ 'markup',
     'styles',
     'javascript',
+    'javascript_vendors',
     'images' ]
 )
 
@@ -71,12 +73,19 @@ gulp.task('styles', function () {
 
 // Copy javascript:
 gulp.task('javascript', function () {
-  gulp.src(jsSrc[0])
+  gulp.src(jsSrc)
   .pipe(plumber())
+  .pipe(concat('all.js'))
   .pipe(uglify())
   .pipe(gulp.dest('build/javascript'))
 })
 // TO-DO: Implement hinting & collation.
+
+gulp.task('javascript_vendors', function () {
+  gulp.src('source/javascript/vendor/*')
+  .pipe(plumber())
+  .pipe(gulp.dest('build/javascript'))
+})
 
 // Copy images to build dir:
 gulp.task('images', function () {

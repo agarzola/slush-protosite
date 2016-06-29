@@ -84,7 +84,7 @@ gulp.task('javascript', function () {
 gulp.task('javascript_vendors', function () {
   gulp.src('source/javascript/vendor/*')
   .pipe(plumber())
-  .pipe(gulp.dest('build/javascript'))
+  .pipe(gulp.dest('build/javascript/vendor'))
 })
 
 // Copy images to build dir:
